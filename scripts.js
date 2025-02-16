@@ -9,7 +9,7 @@ const grids = document.querySelector('.grids');
 // add a button on the top of the screen that will send the user a popup asking how many grids they want (max 100)
 // using the new value the old grid should be removed and replaced with a new grid with the specified squares
 
-grids.addEventListener('mouseover', colorGrid() )
+
 
 function createGrid(number) {
     for (let i = 0; i < number;i++) {
@@ -20,8 +20,13 @@ function createGrid(number) {
         const grid = document.createElement('div');
         grid.className = 'grids';
         gridContainer.appendChild(grid)
-    }}
-}
+        grid.addEventListener('mouseover', function (e) {
+            this.className = 'colored'
+        });
+    }}}   
+        
+    
+
 function gridNumber(){
     let number = prompt('How many grids would you like');
     if (number > 100 || number <= 0) {
@@ -36,7 +41,9 @@ function gridNumber(){
     }}
 
 function colorGrid() {
-    
+    grids.className = 'colored'
 }
+
+
 
 gridNumber()
